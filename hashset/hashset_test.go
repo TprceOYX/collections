@@ -29,7 +29,7 @@ func TestHashSet(t *testing.T) {
 		t.Fatalf("wrong count, expected:%d, actual:%d", 2, count)
 	}
 
-	strSet = strSet.Intersection(hashset.NewHashSetFromSlice(s1).Intersection(hashset.NewHashSetFromSlice(s2)))
+	strSet = hashset.NewHashSetFromSlice(s1).Intersection(hashset.NewHashSetFromSlice(s2))
 	if strSet.Len() != 2 {
 		t.Fatalf("wrong length of hashset, expected:%d, actual:%d", 2, strSet.Len())
 	}
