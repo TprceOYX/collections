@@ -26,7 +26,7 @@ func (s HashSet[T]) Len() int {
 	return len(s)
 }
 
-// Add adds a new element to this set
+// Add adds a new element to this hashset
 func (s HashSet[T]) Add(elements ...T) {
 	for _, v := range elements {
 		s[v] = struct{}{}
@@ -48,15 +48,14 @@ func (s HashSet[T]) Range(f func(ele T) bool) {
 	}
 }
 
-// Merge sequentially traverses the given hashsets and merges them into this set one by one
-// Will directly update this set instead of creating a new hashset to store the results
-func (s HashSet[T]) Merge(others ...HashSet[T]) HashSet[T] {
+// Merge sequentially traverses the given hashsets and merges them into this hashset one by one
+// Will directly update this hashset instead of creating a new hashset to store the results
+func (s HashSet[T]) Merge(others ...HashSet[T]) {
 	for _, set := range others {
 		for k := range set {
 			s[k] = struct{}{}
 		}
 	}
-	return s
 }
 
 // Intersection returns a new hashset containing the same elements as this hashset and the given hashset.
